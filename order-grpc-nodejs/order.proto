@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package order;
+
+service OrderService {
+  rpc calculateTotal (OrderRequest) returns (OrderResponse);
+}
+
+message OrderRequest {
+  string productId = 1;
+  int32 quantity = 2;
+}
+
+message OrderResponse {
+  double totalPrice = 1;
+}

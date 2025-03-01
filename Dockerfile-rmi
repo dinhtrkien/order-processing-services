@@ -1,0 +1,15 @@
+# Use an official OpenJDK runtime as a parent image
+FROM openjdk:17-jdk-alpine
+
+# Create app directory
+WORKDIR /app
+
+# Copy your RMI server JAR into the container
+COPY rmi-server.jar /app/
+
+# Expose the RMI registry port (1099 by default)
+EXPOSE 1099
+
+# Run the JAR
+# (If your JAR starts the registry itself, no extra command needed)
+ENTRYPOINT ["java", "-jar", "rmi-server.jar"]
